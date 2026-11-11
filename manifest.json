@@ -1,0 +1,11 @@
+{
+  "name": "برنامج بورتاج للتقييم النمائي - تجربة 24 ساعة",
+  "short_name": "بورتاج تجريبي",
+  "lang": "ar",
+  "dir": "rtl",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#f4fafc",
+  "theme_color": "#123247",
+  "icons": [{ "src": "icon.svg", "sizes": "any", "type": "image/svg+xml", "purpose": "any" }]
+}

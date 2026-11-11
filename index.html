@@ -1,0 +1,59 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#123247">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="بورتاج تجريبي">
+  <title>بورتاج زويل - تجربة 24 ساعة</title>
+  <link rel="manifest" href="manifest.json">
+  <link rel="apple-touch-icon" href="icon.svg">
+  <script src="trial-gate.js"></script>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="app-header">
+    <div class="brand-mark" aria-hidden="true">ب</div>
+    <div><h1>برنامج بورتاج للتقييم النمائي</h1><p>تقييم بنود البورتاج وخطة العمل الفردية</p></div>
+    <button id="themeBtn" class="icon-button" type="button" title="تغيير المظهر">◐</button>
+  </header>
+  <main class="app-shell">
+    <section class="case-card">
+      <div class="section-heading"><div><span class="eyebrow">الخطوة الأولى</span><h2>بيانات الحالة</h2></div><span id="ageHint" class="status-pill">أدخل تاريخ الميلاد</span></div>
+      <div class="case-grid">
+        <label>اسم الطفل<input id="childName" autocomplete="name" placeholder="اكتب اسم الطفل"></label>
+        <label>تاريخ الميلاد<input id="birthDate" type="date"></label>
+        <label>تاريخ التقييم<input id="assessmentDate" type="date"></label>
+        <label>العمر الزمني بالشهور<input id="ageMonths" type="text" readonly placeholder="يحسب تلقائياً"></label>
+        <label>القائم بالتقييم<input id="rater" placeholder="اسم الأخصائي"></label>
+      </div>
+      <div class="main-actions">
+        <button id="ageSelectBtn" class="primary">تحديد سنوات التقييم حسب العمر</button><button id="calcBtn">حساب النتائج</button><button id="saveBtn">حفظ الحالة</button><button id="openBtn">فتح آخر حالة</button><button id="wordBtn">تصدير تقرير Word</button><button id="printBtn" class="secondary">طباعة</button><button id="resetBtn" class="quiet">تقييم جديد</button>
+      </div>
+    </section>
+    <section class="evaluation-panel">
+      <div class="section-heading evaluation-head"><div><span class="eyebrow">الخطوة الثانية</span><h2>تقييم البنود</h2></div><div id="evaluationSummary" class="evaluation-summary"></div></div>
+      <p class="helper-text">اختَر المجال ثم السنة. اضغط <b>اجتاز</b> أو <b>لم يجتز</b> أمام كل بند. السنوات السابقة تُحتسب تلقائياً وفق العمر ويمكن فتحها وتقييم أي بند فيها.</p>
+      <div id="domainTabs" class="domain-tabs" aria-label="اختيار المجال"></div><div id="yearTabs" class="year-tabs" aria-label="اختيار السنة"></div>
+      <div class="item-toolbar"><div id="itemTitle"></div><div class="toolbar-actions"><button id="passAllBtn" class="small-action" type="button">اجتاز كل البنود المعروضة</button><button id="clearYearBtn" class="small-action muted" type="button">إلغاء درجات هذه السنة</button></div></div>
+      <div id="itemList" class="item-list"></div>
+    </section>
+    <section class="results-panel">
+      <div class="section-heading"><div><span class="eyebrow">الخطوة الثالثة</span><h2>النتائج</h2></div><div id="generalResult" class="general-result"></div></div>
+      <div class="results-grid"><div class="chart-card"><canvas id="chart" width="1000" height="410"></canvas></div><div id="results" class="result-cards"></div></div><div class="table-card"><div id="summaryTable"></div></div>
+    </section>
+  </main>
+  <footer>تصميم وبرمجة مصطفى إبراهيم زويل - 01028057653</footer>
+  <script>
+    if (!window.PORTAGE_TRIAL_EXPIRED) {
+      var portageData = document.createElement('script');
+      portageData.src = 'portage-data.js';
+      portageData.onload = function () { var app = document.createElement('script'); app.src = 'app.js'; document.body.appendChild(app); };
+      document.body.appendChild(portageData);
+    }
+    if ('serviceWorker' in navigator) { window.addEventListener('load', function () { navigator.serviceWorker.register('./sw.js'); }); }
+  </script>
+</body>
+</html>
