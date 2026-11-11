@@ -1,4 +1,4 @@
-var CACHE_NAME = 'zewail-portage-trial-pwa-v1';
+var CACHE_NAME = 'zewail-portage-trial-pwa-v2';
 var APP_FILES = ['./', './index.html', './styles.css', './portage-data.js', './app.js', './trial-gate.js', './manifest.json', './icon.svg'];
 self.addEventListener('install', function (event) {
   event.waitUntil(caches.open(CACHE_NAME).then(function (cache) {
